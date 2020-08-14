@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/shutdownButton"
+            android:layout_width="110dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+            android:drawableTop="@drawable/shutdown_black_24dp"
+            android:text="Shutdown"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="110dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+            android:drawableTop="@drawable/restart_black_24dp"
+            android:text="Restart"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/sleepButton"
+            android:layout_width="110dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+            android:drawableTop="@drawable/sleep_black_24dp"
+            android:text="sleep"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/lockButton"
+            android:layout_width="110dp"
+            android:layout_height="70dp"
+            android:layout_margin="15dp"
+            android:drawableTop="@drawable/lock_black_24dp"
+            android:text="Lock"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+
+</LinearLayout>

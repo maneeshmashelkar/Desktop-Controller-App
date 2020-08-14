@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/connect"
+        android:icon="@drawable/connect_black_24dp"
+        android:title="@string/connect" />
+    <item
+        android:id="@+id/mouse"
+        android:icon="@drawable/mouse_black_24dp"
+        android:title="@string/mouse" />
+    <item
+        android:id="@+id/keyboard"
+        android:icon="@drawable/keyboard_black_24dp"
+        android:title="@string/keyboard" />
+    <item
+        android:id="@+id/presentation"
+        android:icon="@drawable/presentation_black_24dp"
+        android:title="@string/presentation" />
+    <item
+        android:id="@+id/poweroff"
+        android:icon="@drawable/poweroff_black_24dp"
+        android:title="@string/poweroff" />
+</menu>
