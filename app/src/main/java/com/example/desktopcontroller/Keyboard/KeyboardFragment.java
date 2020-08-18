@@ -40,6 +40,7 @@ public class KeyboardFragment extends Fragment implements TextWatcher, View.OnTo
         backspaceButton = view.findViewById(R.id.BackspaceButton);
         ctrlButton = view.findViewById(R.id.CtrlButton);
 
+        //open the soft keyboard
         keyEditText.requestFocus();
         InputMethodManager keyboard=(InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         keyboard.toggleSoftInput(InputMethodManager.SHOW_FORCED,InputMethodManager.HIDE_IMPLICIT_ONLY);
@@ -65,7 +66,7 @@ public class KeyboardFragment extends Fragment implements TextWatcher, View.OnTo
         if (id == R.id.ClearButton) {
             keyEditText.setText("");
         }else {
-            int keyCode = 17;//dummy initialization
+            int keyCode = 17;//initialization
             String action = "TYPE_KEY";
             switch (id) {
                 case R.id.EnterButton:
@@ -82,6 +83,8 @@ public class KeyboardFragment extends Fragment implements TextWatcher, View.OnTo
                     break;
             }
             Log.i("key", "onTouch: "+keyCode);
+
+            //send key code to server
             sendKeyCodeToServer(action, keyCode);
         }
     }
@@ -94,7 +97,7 @@ public class KeyboardFragment extends Fragment implements TextWatcher, View.OnTo
         } else if (event.getAction() == MotionEvent.ACTION_UP) {
             action = "KEY_RELEASE";
         }
-        int keyCode = 17;//dummy initialization
+        int keyCode = 17;//initialization
         switch (v.getId()) {
 
             case R.id.CtrlButton:
@@ -108,6 +111,8 @@ public class KeyboardFragment extends Fragment implements TextWatcher, View.OnTo
                 break;
         }
         Log.i("key", "onTouch: "+keyCode);
+
+        //send key code to server
         sendKeyCodeToServer(action, keyCode);
         return false;
     }
@@ -121,11 +126,13 @@ public class KeyboardFragment extends Fragment implements TextWatcher, View.OnTo
 
     @Override
     public void onTextChanged(CharSequence s, int start, int before, int count) {
-        char ch = newCharacter(s, previousText);
+        char ch = newCharacter(s, previousText); //get the new characters
         Log.i("text", "onTextChanged: "+ch);
         if (ch == 0) {
             return;
         }
+
+        //send data to server
         MainActivity.sendMessageToServer("TYPE_CHARACTER");
         MainActivity.sendMessageToServer(Character.toString(ch));
         previousText = s.toString();

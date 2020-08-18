@@ -20,11 +20,8 @@ import androidx.fragment.app.Fragment;
 public class MouseFragment extends Fragment {
     private TextView mousepad;
     private Button leftclick, rightclick;
-    private int initX, initY, disX, disY, moveResultX, moveResultY;
-    private boolean mouseMoved = false, moultiTouch = false;
-    private float mLastMoveX = Float.MAX_VALUE;
-    private float mLastMoveY = Float.MAX_VALUE;
-    private long mLastMoveTime;
+    private int initX, initY, disX, disY;
+    private boolean mouseMoved = false, multiTouch = false;
 
     @SuppressLint("ClickableViewAccessibility")
     @Nullable
@@ -36,12 +33,15 @@ public class MouseFragment extends Fragment {
         leftclick = (Button) rootView.findViewById(R.id.leftClick);
         rightclick = (Button) rootView.findViewById(R.id.rightClick);
 
+        //mouse left click
         leftclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 simulateLeftClick();
             }
         });
+
+        //mouse right click
         rightclick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,24 +59,23 @@ public class MouseFragment extends Fragment {
                             //save X and Y positions when user touches the TextView
                             initX = (int) event.getX();
                             initY = (int) event.getY();
-                            moveResultX = 0;
-                            moveResultY = 0;
                             Log.i("MOUSETOUCH", "onTouch: " + initX + "," + initY);
                             mouseMoved = false;
                             break;
                         case MotionEvent.ACTION_MOVE:
-                            if (moultiTouch == false) {
+                            if (multiTouch == false) {
                                 disX = (int) event.getX() - initX; //Mouse movement in x direction
                                 disY = (int) event.getY() - initY; //Mouse movement in y direction
                                 Log.i("EVENT", "latest" + event.getX() + "," + event.getY());
                                 Log.i("MOUSEMOVE", "onmove: " + disX + "," + disY);
-                                        /*set init to new position so that continuous mouse movement
-                                        is captured*/
+                                /*set init to new position so that continuous mouse movement
+                                is captured*/
                                 initX = (int) event.getX();
                                 initY = (int) event.getY();
                                 if (disX != 0 || disY != 0) {
-                                    MainActivity.sendMessageToServer("MOUSE_MOVE");
+
                                     //send mouse movement to server
+                                    MainActivity.sendMessageToServer("MOUSE_MOVE");
                                     MainActivity.sendMessageToServer(disX);
                                     MainActivity.sendMessageToServer(disY);
                                     mouseMoved = true;
@@ -86,6 +85,7 @@ public class MouseFragment extends Fragment {
                                 disY = disY / 3;//to scroll by less amount
                                 initY = (int) event.getY();
                                 if (disY != 0) {
+                                    //send mouse movement to server
                                     MainActivity.sendMessageToServer("MOUSE_WHEEL");
                                     MainActivity.sendMessageToServer(disY);
                                     mouseMoved = true;
@@ -102,13 +102,13 @@ public class MouseFragment extends Fragment {
                         case MotionEvent.ACTION_POINTER_DOWN:
                             initY = (int) event.getY();
                             mouseMoved = false;
-                            moultiTouch = true;
+                            multiTouch = true;
                             break;
                         case MotionEvent.ACTION_POINTER_UP:
                             if (!mouseMoved) {
                                 MainActivity.sendMessageToServer("LEFT_CLICK");
                             }
-                            moultiTouch = false;
+                            multiTouch = false;
                             break;
                     }
                 }

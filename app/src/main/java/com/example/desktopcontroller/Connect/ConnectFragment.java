@@ -38,11 +38,13 @@ public class ConnectFragment extends Fragment {
         PORT = (EditText) rootview.findViewById(R.id.portEditview);
         connect = (Button) rootview.findViewById(R.id.connectbtn);
 
+        // last ip address and port number
         sharedPreferences = getActivity().getSharedPreferences("lastConnectionDetails", Context.MODE_PRIVATE);
         String lastConnectionDetails[] = getConnectionDetails();
         IP.setText(lastConnectionDetails[0]);
         PORT.setText(lastConnectionDetails[1]);
 
+        //check the connection is established
         if (MainActivity.clientSocket != null) {
             connect.setText("connected");
             connect.setEnabled(false);
@@ -60,13 +62,19 @@ public class ConnectFragment extends Fragment {
 
 
     public void makeConnection() {
-
+        //get ip and port
         String ipAddress = IP.getText().toString();
         String port =PORT.getText().toString();
+
+        //save ip and port
         setConnectionDetails(new String[] {ipAddress, port});
+
+
         connect.setText("Connecting...");
         connect.setEnabled(false);
-            new MakeConnection(ipAddress, port, getActivity()) {
+
+        //make the connection to server
+            new MakeConnection(ipAddress, port) {
                 @Override
                 public void receiveData(Object result) {
                     MainActivity.clientSocket = (Socket) result;

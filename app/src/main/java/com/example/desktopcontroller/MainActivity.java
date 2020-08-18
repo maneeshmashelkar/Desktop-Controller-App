@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        //set the title of fragment
         toolText = toolbar.findViewById(R.id.toolbar_title);
         toolText.setText(toolbar.getTitle());
 
@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionBarDrawerToggle.setDrawerIndicatorEnabled(true);
         actionBarDrawerToggle.syncState();
 
+
+        //hide the keyboard when drawer open
         drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
 
             @Override
@@ -81,10 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-
-
-        //load default fragment
-
+        //load default connect fragment
         replaceFragment(R.id.connect);
     }
 
@@ -131,6 +130,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
 
         }
+            //set the required fragment
             if (fragment != null) {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.container_fragment, fragment);

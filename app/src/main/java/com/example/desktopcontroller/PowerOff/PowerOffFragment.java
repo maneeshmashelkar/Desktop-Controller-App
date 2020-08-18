@@ -39,11 +39,13 @@ public class PowerOffFragment extends Fragment implements View.OnClickListener {
         lockButton = (Button) view.findViewById(R.id.lockButton);
         lockButton.setOnClickListener(this);
 
+        //confirmation dialog box
         dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 switch(which) {
                     case DialogInterface.BUTTON_POSITIVE:
+                        //send msg to server
                         MainActivity.sendMessageToServer(action);
                         dialog.dismiss();
                         break;
@@ -62,6 +64,8 @@ public class PowerOffFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
+
+        //get the msg of the button
         switch(id) {
             case R.id.shutdownButton:
                 action = "SHUTDOWN";

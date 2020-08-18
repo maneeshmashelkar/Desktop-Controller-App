@@ -46,6 +46,8 @@ public class PresentationFragment extends Fragment implements View.OnClickListen
     public void onClick(View v) {
         int id = v.getId();
         String action = "PRESENTATION_KEY";
+
+        //get msg of the button clicked
         switch (id) {
             case R.id.upButton:
                 action = "UP_KEY";
@@ -58,10 +60,12 @@ public class PresentationFragment extends Fragment implements View.OnClickListen
                 if(flag){
                     action = "PRESENTATION_MAX_KEY";
                     flag=false;
+                    //set "fullscreen exit" background image
                     presentationButton.setBackgroundResource(R.drawable.fullscreen_exit_black_24dp);
                 }else{
                     action = "PRESENTATION_MIN_KEY";
                     flag=true;
+                    //set "fullscreen" background image
                     presentationButton.setBackgroundResource(R.drawable.fullscreen_black_24dp);
                 }
                 break;
@@ -73,6 +77,7 @@ public class PresentationFragment extends Fragment implements View.OnClickListen
                 break;
 
         }
+        //send the msg to server
         MainActivity.sendMessageToServer(action);
     }
 }

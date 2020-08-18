@@ -11,13 +11,11 @@ import java.net.SocketAddress;
 public abstract class MakeConnection extends AsyncTask<Void, Void, Socket>implements CallbackReceiver
 {
     private String ipAddress, port;
-//    private Context context;
     private Socket clientSocket;
 
-    protected MakeConnection(String ipAddress, String port, Context context) {
+    protected MakeConnection(String ipAddress, String port) {
         this.ipAddress = ipAddress;
         this.port = port;
-//        this.context = context;
     }
 
     @Override
@@ -26,9 +24,8 @@ public abstract class MakeConnection extends AsyncTask<Void, Void, Socket>implem
             int portNumber = Integer.parseInt(port);
             SocketAddress socketAddress = new InetSocketAddress(ipAddress, portNumber);
             clientSocket = new Socket();
-            // 3s timeout
+            // wait for 3 second
             clientSocket.connect(socketAddress, 3000);
-//            MainActivity.objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
             MainActivity.objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
         } catch(Exception e) {
             e.printStackTrace();
