@@ -88,11 +88,22 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="scalingPercent" value="84" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="358cad" />
+                                      <entry key="backgroundImage" value="D:\transparent.png" />
+                                      <entry key="foregroundImage" value="D:\Desktop Controller.png" />
+                                      <entry key="legacyIconShape" value="NONE" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -140,11 +151,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
