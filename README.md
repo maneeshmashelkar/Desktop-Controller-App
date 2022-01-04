@@ -2,6 +2,9 @@
 
 Desktop Controller is an Android Application that works on the concepts of socket programming. Main aim for developing this application is to provide the user with a remote for his/her PC in the form of an android device. Using this application, the user may perform various actions on his/her PC such as controlling the mouse and Keyboard, sliding through various PPT slides, shutdown PC and etc.
 
+## Screenshots:
+<img alt="APK SS" src="https://github.com/maneeshmashelkar/Desktop-Controller-App/blob/master/images/connect.png" width="250" height="450"> <img alt="APK SS" src="https://github.com/maneeshmashelkar/Desktop-Controller-App/blob/master/images/nav.png" width="250" height="450"> <img alt="APK SS" src="https://github.com/maneeshmashelkar/Desktop-Controller-App/blob/master/images/keyboard.png" width="250" height="450"> <img alt="APK SS" src="https://github.com/maneeshmashelkar/Desktop-Controller-App/blob/master/images/mouse.png" width="250" height="450"> <img alt="APK SS" src="https://github.com/maneeshmashelkar/Desktop-Controller-App/blob/master/images/poweroff.png" width="250" height="450"> <img alt="APK SS" src="https://github.com/maneeshmashelkar/Desktop-Controller-App/blob/master/images/presentation.png" width="250" height="450">
+
 ## Download:
 
 App: [Desktop Controller.apk](https://drive.google.com/file/d/1SCLhA_j-4B9l9VcljVpysF6ncWCnATWb/view?usp=sharing).
